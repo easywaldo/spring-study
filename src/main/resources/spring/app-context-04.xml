@@ -7,7 +7,11 @@
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-    <bean id="motorCarOne" class="bean.OliBasedMotorImpl" primary="true" />
-    <bean id="oilCarOne" class="bean.GasBasedMotorImpl" />
-    <bean id="targetByType" autowire="byType" class="bean.BeanApplication" lazy-init="true"/>
+
+    <bean id="motorCarOne" class="bean.mine.OliBasedMotorImpl" primary="true" />
+    <bean id="oilCarOne" class="bean.mine.GasBasedMotorImpl" />
+    <bean id="targetByType" autowire="byType" class="bean.mine.BeanApplication" lazy-init="true" />
+    
+    
+    <context:component-scan base-package="bean" />
 </beans>

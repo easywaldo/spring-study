@@ -1,4 +1,4 @@
-package bean;
+package bean.mine;
 
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.support.GenericXmlApplicationContext;

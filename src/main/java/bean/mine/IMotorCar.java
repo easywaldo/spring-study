@@ -1,4 +1,4 @@
-package bean;
+package bean.mine;
 
 public interface IMotorCar {
     void feelEnergy();

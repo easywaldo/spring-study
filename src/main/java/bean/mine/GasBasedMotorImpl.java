@@ -1,9 +1,12 @@
-package bean;
+package bean.mine;
 
-public class OliBasedMotorImpl implements IMotorCar {
+import org.springframework.stereotype.Component;
+
+@Component
+public class GasBasedMotorImpl implements IMotorCar {
     @Override
     public void feelEnergy() {
-        System.out.println("기름을 채웁니다.");
+        System.out.println("가스를 채웁니다.");
     }
 
     @Override
@@ -18,11 +21,11 @@ public class OliBasedMotorImpl implements IMotorCar {
 
     @Override
     public void left() {
-        System.out.println("차가 좌회전 합니다.");
+        System.out.println("차가 좌회전합니다.");
     }
 
     @Override
     public void right() {
-        System.out.println("차가 우회전 합니다.");
+        System.out.println("차가 우회전합니다.");
     }
 }
