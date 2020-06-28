@@ -1,6 +1,7 @@
 package bean.mine;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Component;
@@ -31,12 +32,14 @@ public class TrickyTarget {
     }*/
 
     @Autowired
-    public void setCarOne(OliBasedMotorImpl car) {
+    @Qualifier("oilBasedMotorImpl")
+    public void setCarOne(IMotorCar car) {
         this.carOne = car;
     }
 
     @Autowired
-    public void setCarTwo(GasBasedMotorImpl car) {
+    @Qualifier("gasBasedMotorImpl")
+    public void setCarTwo(IMotorCar car) {
         this.carTwo = car;
     }
 
