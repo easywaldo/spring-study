@@ -8,8 +8,10 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="motorCarOne" class="bean.mine.OliBasedMotorImpl" primary="true" />
-    <bean id="oilCarOne" class="bean.mine.GasBasedMotorImpl" />
+    <bean id="oilCarOne" class="bean.mine.OliBasedMotorImpl" />
+    <bean id="gasCarOne" class="bean.mine.GasBasedMotorImpl" />
+
+    <bean id="targetConstructor" autowire="constructor" class="bean.mine.BeanApplication" lazy-init="true" />
     <bean id="targetByType" autowire="byType" class="bean.mine.BeanApplication" lazy-init="true" />
     
     

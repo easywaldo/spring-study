@@ -22,10 +22,9 @@ public class TargetDemo {
 
     public static void main(String args[]) {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(TargetConfig.class);
+        // TODO: Runtime error
         TrickyTarget trickyTarget = ctx.getBean(TrickyTarget.class);
         ctx.close();
-
-
     }
 
 }

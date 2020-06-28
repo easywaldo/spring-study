@@ -1,5 +1,6 @@
 package bean.mine;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.support.GenericXmlApplicationContext;
 import org.springframework.stereotype.Component;
@@ -14,21 +15,41 @@ public class BeanApplication {
         System.out.println("Target Constructor()");
     }
 
-    public BeanApplication(IMotorCar car) {
+    @Autowired
+    public BeanApplication(
+            IMotorCar carOne,
+            IMotorCar carTwo) {
         System.out.println("Target(Car) 호출");
+        this.carOne = carOne;
+        this.carTwo = carTwo;
     }
 
     public static void main(String[] args) {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext();
         ctx.load("classpath:spring/app-context-04.xml");
         ctx.refresh();
-        System.out.println("Using by Type");
-        BeanApplication t = (BeanApplication)ctx.getBean("targetByType");
 
-        IMotorCar oliBasedMotor = (OliBasedMotorImpl)ctx.getBean("motorCarOne");
+        // 타입에 의한 Bean 주입
+        BeanApplication t = (BeanApplication)ctx.getBean("targetByType");
+        System.out.println("Using by Type");
+        t.carOne.feelEnergy();
+
+        // 생성자에 의한 Bean 주입
+        BeanApplication constructorApp = (BeanApplication)ctx.getBean("targetConstructor");
+        System.out.println("make car one..");
+        constructorApp.carOne.feelEnergy();
+        System.out.println("make car two..");
+        constructorApp.carTwo.feelEnergy();
+
+
+        // Bean name 에 의한 Bean 주입
+        System.out.println("make car one by bean name ..");
+        IMotorCar oliBasedMotor = (OliBasedMotorImpl)ctx.getBean("oilCarOne");
         oliBasedMotor.feelEnergy();
 
-        IMotorCar gasBasedMotor = (GasBasedMotorImpl)ctx.getBean("oilCarOne");
+        // Bean name 에 의한 Bean 주입
+        System.out.println("make car one by bean name ..");
+        IMotorCar gasBasedMotor = (GasBasedMotorImpl)ctx.getBean("gasCarOne");
         gasBasedMotor.feelEnergy();
         ctx.close();
     }
